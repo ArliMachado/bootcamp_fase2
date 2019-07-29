@@ -1,10 +1,13 @@
+require('dotenv').config({
+  path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env',
+});
 
 module.exports = {
   dialect: 'postgres',
-  host: '192.168.99.100',
-  username: 'docker',
-  password: 'docker',
-  database: 'gobarber',
+  host: process.env.DB_HOST,
+  username: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DATABASE,
   define: {
     timestamps: true,
     underscored: true,
