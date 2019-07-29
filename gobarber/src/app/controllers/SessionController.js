@@ -2,9 +2,7 @@ import jwt from 'jsonwebtoken';
 
 import User from '../models/User';
 
-require('dotenv').config({
-  path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env',
-});
+import auth from '../../config/auth';
 
 class SessionController {
   async store(req, res) {
@@ -28,8 +26,8 @@ class SessionController {
         name,
         email,
       },
-      token: jwt.sign({ id }, process.env.PASS_HASH, {
-        expiresIn: '7d',
+      token: jwt.sign({ id }, auth.passHash, {
+        expiresIn: auth.expiresIn,
       }),
     });
   }
