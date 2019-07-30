@@ -3,6 +3,6 @@ require('dotenv').config({
 });
 
 module.exports = {
-  passHash: process.env.PASS_HASH,
+  secret: process.env.PASS_HASH,
   expiresIn: '7d',
 };
